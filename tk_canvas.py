@@ -54,3 +54,21 @@ canvas.pack()
 window.mainloop()
 
 #-------------------------------------------
+
+#движение объекта после нажатия мышкой
+import tkinter
+window  = tkinter.Tk()
+
+def callback(event):
+    #движение на 5 пикселей по оси х
+    canvas.move(id, 5,0) 
+    
+canvas = tkinter.Canvas(window , height=500, width=500)
+canvas.grid(row = 0, column = 0)
+
+man = tkinter.PhotoImage(file = 'images/pixel-man.gif')
+id = canvas.create_image(253,450, image=man)
+
+canvas.bind("<Button-1>", callback)
+canvas.pack()
+window.mainloop()
