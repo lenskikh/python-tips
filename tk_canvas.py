@@ -39,3 +39,18 @@ canvas.pack()
 mainloop()
 
 #-------------------------------------------
+
+#загрузка изображения в canvas
+import tkinter
+window  = tkinter.Tk()
+
+canvas = tkinter.Canvas(window , height=900, width=502)
+canvas.grid(row = 0, column = 0)
+
+calculator_background = tkinter.PhotoImage(file = 'images/bg.gif')
+canvas.create_image(253,450, image=calculator_background)
+
+canvas.pack()
+window.mainloop()
+
+#-------------------------------------------
