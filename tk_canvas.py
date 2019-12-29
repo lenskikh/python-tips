@@ -3,7 +3,7 @@
 '''
 #-------------------------------------------
 
-#Реакция на клавиатуру
+#Реакция на клавиатуры
 
 from tkinter import Canvas,Tk,mainloop
 window = Tk()
@@ -72,3 +72,57 @@ id = canvas.create_image(253,450, image=man)
 canvas.bind("<Button-1>", callback)
 canvas.pack()
 window.mainloop()
+
+#-------------------------------------------
+
+#движения объекта с использованием стрелок
+import tkinter
+window  = tkinter.Tk()
+
+def callback(event):
+    #перевод события в строку, чтобы можно разделить.
+    razbor = str(event).split(" ")
+    arrows = razbor[3].split("=")[1]
+    print(arrows)
+    if arrows == "Right":
+        canvas.move(id, 5,0)
+    elif arrows == "Left":
+        canvas.move(id, -5,0)
+    elif arrows == "Down":
+        canvas.move(id, 0,5)
+    else:
+        canvas.move(id, 0,-5)    
+ 
+canvas = tkinter.Canvas(window , height=500, width=500)
+canvas.grid(row = 0, column = 0)
+
+man = tkinter.PhotoImage(file = 'images/pixel-man.gif')
+id = canvas.create_image(15,30, image=man)
+
+#Установление фокуса на фрейме. Автоматом фокус вне фрейма.
+canvas.focus_set()
+
+#реакция на любую клавишу
+canvas.bind("<Key>", callback)
+
+canvas.pack()
+window.mainloop()
+
+#-------------------------------------------
+
+#рисует квардраты по курсоры мышки.
+import tkinter
+window  = tkinter.Tk()
+
+def callback(event):
+    print(str(event.x) + "," + str(event.y))
+    canvas.create_rectangle(event.x,event.y,event.x+8,event.y+8, fill="black")
+    
+canvas = tkinter.Canvas(window , height=500, width=500)
+canvas.grid(row = 0, column = 0)
+
+canvas.bind("<Button-1>", callback)
+canvas.pack()
+window.mainloop()
+
+#-------------------------------------------
