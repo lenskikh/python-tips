@@ -110,7 +110,7 @@ window.mainloop()
 
 #-------------------------------------------
 
-#рисует квардраты по курсоры мышки.
+#рисует квардраты по курсору мышки.
 import tkinter
 window  = tkinter.Tk()
 
@@ -126,3 +126,25 @@ canvas.pack()
 window.mainloop()
 
 #-------------------------------------------
+
+#Получение id объекта по нажатию мышы
+import tkinter as tk
+
+def get_object_id(event):
+    x = canvas.canvasx(event.x)
+    y = canvas.canvasy(event.y)
+    item_id = canvas.find_closest(x, y)[0]
+    print("Clicked object ID:", item_id)
+
+root = tk.Tk()
+canvas = tk.Canvas(root, width=400, height=400)
+canvas.pack()
+
+# Create some objects on the canvas
+rect_id = canvas.create_rectangle(50, 50, 150, 150, fill="red")
+oval_id = canvas.create_oval(200, 200, 300, 300, fill="blue")
+
+# Bind the function to the mouse click event
+canvas.bind("<Button-1>", get_object_id)
+
+root.mainloop()
