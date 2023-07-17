@@ -82,16 +82,17 @@ window  = tkinter.Tk()
 def callback(event):
     #перевод события в строку, чтобы можно разделить.
     razbor = str(event).split(" ")
-    arrows = razbor[3].split("=")[1]
+    arrows = razbor[4].split("=")[1]
     print(arrows)
-    if arrows == "Right":
-        canvas.move(id, 5,0)
-    elif arrows == "Left":
-        canvas.move(id, -5,0)
-    elif arrows == "Down":
-        canvas.move(id, 0,5)
-    else:
-        canvas.move(id, 0,-5)    
+    match arrows:
+        case "Right":
+            canvas.move(id, 5,0)
+        case "Left":
+            canvas.move(id, -5,0)
+        case "Down":
+            canvas.move(id, 0,5)
+        case "Up":
+            canvas.move(id, 0,-5)     
  
 canvas = tkinter.Canvas(window , height=500, width=500)
 canvas.grid(row = 0, column = 0)
