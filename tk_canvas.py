@@ -3,7 +3,7 @@
 '''
 #-------------------------------------------
 
-#Реакция на клавиатуры
+#Реакция на нажатия с клавиатуры
 
 from tkinter import Canvas,Tk,mainloop
 window = Tk()
@@ -171,3 +171,27 @@ def delete_object_by_id(canvas, object_id):
 delete_object_by_id(canvas, object_id)
 
 root.mainloop()
+
+#-------------------------------------------
+
+#решаем проблему с созданием множеством объектов
+import tkinter as tk
+
+# Создаем главное окно
+root = tk.Tk()
+canvas = tk.Canvas(root, width=400, height=300)
+canvas.pack()
+
+# Глобальная переменная для хранения изображения
+img_objects = []
+
+def create_obj(x, y, figure):
+    obj = tk.PhotoImage(file=figure)
+    canvas.create_image(x, y, image=obj)
+    img_objects.append(obj)  # Сохраняем ссылку на изображение
+
+# Создание объекта изображения
+create_obj(105, 555, 'pawn_white.png')
+
+root.mainloop()
+
