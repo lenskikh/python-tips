@@ -149,3 +149,25 @@ oval_id = canvas.create_oval(200, 200, 300, 300, fill="blue")
 canvas.bind("<Button-1>", get_object_id)
 
 root.mainloop()
+
+#-------------------------------------------
+
+#Удаление объекта по id
+import tkinter as tk
+
+# Create the main window
+root = tk.Tk()
+canvas = tk.Canvas(root, width=400, height=300)
+canvas.pack()
+
+# Create an example object and get its ID
+object_id = canvas.create_rectangle(50, 50, 150, 150, fill='blue')
+
+# Function to delete the object by its ID
+def delete_object_by_id(canvas, object_id):
+    canvas.delete(object_id)
+
+# Delete the object
+delete_object_by_id(canvas, object_id)
+
+root.mainloop()
